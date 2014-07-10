@@ -10,6 +10,11 @@
 	color: #ffffff;
 }
 
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form { 
+	border-color: #FFF;
+}
+
 .navbar-inverse .navbar-toggle {
 	border-color: #fff;
 }
