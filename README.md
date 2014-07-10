@@ -1,0 +1,6 @@
+# LaTroyon
+## Installation
+
+````
+bower install
+````
