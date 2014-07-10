@@ -14,7 +14,8 @@
     "js/libs"
   ],
   "dependencies": {
-    "bootswatch": "~3.2.0"
+    "bootswatch": "~3.2.0",
+    "mustache": "~0.8.2"
   },
   "private": true
 }
