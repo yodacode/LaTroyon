@@ -47,6 +47,11 @@
             </div>
         </div>
 
+        <div class="container">
+            <div class="round">
+                <input type="text" name="round" class="round" data-min="0" data-max="50" value="30" />
+            </div>
+        </div>
 
 
         <!--SCRIPT-->
@@ -57,6 +62,26 @@
 
         <!--Custom-->
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('input.round').each(function () {
+                    var $input = $(this);
+                    var $div = $input.parent();
+
+                    $circle = $('<canvas width="200px" height="200px"/>')
+                    $div.append($circle);
+                    var ctx = $circle[0].getContext('2d');
+
+
+                    ctx.beginPath();
+                    ctx.moveTo(0,0);
+                    ctx.lineTo(50, 50);
+                    ctx.lineTo(0, 150);
+
+                    ctx.stroke();
+                });
+            });
+        </script>
 
     </body>
 </html>

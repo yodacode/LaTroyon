@@ -66,3 +66,32 @@
 .tracks-item img {
 	width: 100%;
 }
+
+
+div.round {
+	margin: 50px;
+	height: 200px;
+	width: 200px;
+	position: relative;
+	border: solid 1px;
+}
+
+div.round input {
+	position: absolute;
+	top: 60px;
+	left: 50px;
+	font-size: 60px;
+	text-align: center;
+	width: 100px;
+	border: none;
+	background: none;
+	outline: none;
+}
+
+div.round canvas {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
