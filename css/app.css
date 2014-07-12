@@ -46,10 +46,10 @@
 
 /** MPC **/
 .mpc {
-	background: #000;
-	width: 650px;
-	overflow: hidden;
-	padding: 4px;
+	background: #3D3D3D;
+	width: 495px;
+	height: 395px;
+	border-radius: 5px;
 	position: absolute;
 	top: 50px;
 	left: 0px;
@@ -57,13 +57,59 @@
 	margin: 0 auto;
 }
 
-.mpc-touch {
-	background: #ebebeb;
-	cursor: pointer;
-	width: 150px;
-	height: 150px;
-	float: left;
+.mpc-keyboard {
+	position: absolute;
+	left: -8px;
+	top: 10px;
+}
+
+.mpc-keyboard-key {
+	width: 100px;
 	margin: 5px;
+	height: 80px;
+	display: inline-block;
+	font-family: Arial, "Helvetica", sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #B1B1B1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 6px;
+	left: 30px;
+	position: relative;
+	cursor: pointer;
+	border: none;
+	background: #E9E9E9;
+	background-image: linear-gradient(bottom, rgb(14,137,182) 0%, rgb(22,179,236) 100%);
+	border-radius: 5px;
+	box-shadow: inset 0px 1px 0px #5A5A5A, 0px 5px 0px 0px #707070, 0px 10px 5px #000;
+}
+
+.mpc-keyboard-key:active, .mpc-keyboard-key.active {
+  	top: 3px;
+	box-shadow: inset 0px 1px 0px #FFFFFF, 0px 2px 0px 0px #969696, 0px 5px 3px #000;
+}
+
+.mpc-keyboard-key:before {
+	font-size: 50px;
+	line-height: 1em;
+	font-weight: normal;
+	color: #fff;
+	width:85px;
+	height:90px;
+	display:block;
+	position:absolute;
+	padding-top:10px;
+	top:10px;
+	text-shadow: 1px 1px 2px #07526e;
+}
+
+.mpc-keyboard-key:active:before {
+	top: 7px;
+	font-size: 50px;
+	text-shadow: 0px 3px 0px #07526e, 0px 5px 1px #07526e/*, 3px 0px 1px #07526e, 3px 3px 1px #07526e,
+	 -2px 0px 1px #68cff2*/;
 }
 
 /** Tracks **/

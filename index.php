@@ -46,19 +46,12 @@
                 </div>
             </div>
         </div>
-
-        <div class="container">
-            <div class="mpc" id="mpc">                
-                <?php for ($i=1; $i < 17; $i++): ?>
-                    <div class="mpc-touch">
-                        <audio controls class="hidden mpc-sound" id="sound-<?php echo $i; ?>">
-                        <source src="sounds/<?php echo $i; ?>.mp3" type="audio/mpeg">
-                        Your browser does not support this audio format.
-                        </audio>                    
-                    </div>
-                <?php endfor; ?>
-
+        
+        
+        <div class="mpc" id="mpc">          
+            
         </div>
+        
 
         <div class="container">
             <div class="round">

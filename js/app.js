@@ -2,18 +2,118 @@ $(function () {
 
 	var App = {};
 
+    var assoc = {
+        81: {
+            letter: 'q',
+            soundId: 1
+        },
+        87: {
+            letter: 'w',
+            soundId: 2
+        },
+        69: {
+            letter: 'e',
+            soundId: 3
+        },
+        82: {
+            letter: 'r',
+            soundId: 4
+        },
+        84: {
+            letter: 't',
+            soundId: 5
+        },
+        89: {
+            letter: 'y',
+            soundId: 6
+        },
+        85: {
+            letter: 'u',
+            soundId: 7
+        },
+        73: {
+            letter: 'i',
+            soundId: 8
+        },
+        79: {
+            letter: 'o',
+            soundId: 9
+        },
+        80: {
+            letter: 'p',
+            soundId: 10
+        },
+        65: {
+            letter: 'a',
+            soundId: 11
+        },
+        83: {
+            letter: 's',
+            soundId: 12
+        },
+        68: {
+            letter: 'd',
+            soundId: 13
+        },
+        70: {
+            letter: 'f',
+            soundId: 14
+        },
+        71: {
+            letter: 'g',
+            soundId: 15
+        },
+        72: {
+            letter: 'h',
+            soundId: 16
+        }
+    };
+
     App.Mpc = {
         init: function () {
             this.UI = {};
-            this.UI.mpc = $('#mpc');
-            this.UI.touchs = $('.mpc-touch');
+            this.UI.mpc = $('.mpc');
+
+            this.UI.keyboard = null;
 
             this.build();
             this.bind();
         },
 
         build: function () {
+            var i;
 
+            this.UI.keyboard = $('<div>')
+                .addClass('mpc-keyboard')
+                .appendTo(this.UI.mpc);
+
+            for (i in assoc) {
+                this.createKey(i, assoc[i].letter, assoc[i].soundId);
+            };
+        },
+
+        createKey: function (code, letter, soundId) {
+            var key, audio, source;
+
+            key = $('<div>')
+                .attr({
+                    id: 'key-' + soundId,
+                    'data-code': code
+                })
+                .text(letter)
+                .addClass('mpc-keyboard-key')
+                .appendTo(this.UI.keyboard);
+
+            audio = $('<audio>')
+                .addClass('mpc-sound').addClass('hidden')
+                .appendTo(key);
+
+            source = $('<source>')
+                .attr({
+                    src: 'sounds/' + soundId + '.mp3',
+                    type: 'audio/mpeg'
+                })
+                .appendTo(audio);
         },
 
         play: function (playerAudio) {
@@ -30,97 +130,21 @@ $(function () {
 
             var that = this;
 
-            this.UI.mpc.on('click', '.mpc-touch', function () {
+            this.UI.mpc.on('click', '.mpc-keyboard-key', function () {
                 var playerAudio  = $(this).find('audio')[0];
                 that.play(playerAudio);
             });
 
             $(document).on('keydown', function(e) {
-                var key = that.getSoundByKeyCode(e.keyCode),
-                    playerAudio  = $('#sound-' + key.soundId)[0];
-                
-                that.play(playerAudio);                
+                var key  = $('.mpc-keyboard-key[data-code=' + e.keyCode + ']');
+                    key.trigger('click');
+                    key.addClass('active');
             });
-        },
 
-        getSoundByKeyCode: function (keyCode) {
-            var key,
-                assoc = {
-                81: {
-                    letter: 'q',
-                    soundId: 1
-                },
-                87: {
-                    letter: 'w',
-                    soundId: 2
-                },
-                69: {
-                    letter: 'e',
-                    soundId: 3
-                },
-                82: {
-                    letter: 'r',
-                    soundId: 4
-                },
-                84: {
-                    letter: 't',
-                    soundId: 5
-                },
-                89: {
-                    letter: 'y',
-                    soundId: 6
-                },
-                85: {
-                    letter: 'u',
-                    soundId: 7
-                },
-                73: {
-                    letter: 'i',
-                    soundId: 8
-                },
-                79: {
-                    letter: 'o',
-                    soundId: 9
-                },
-                80: {
-                    letter: 'p',
-                    soundId: 10
-                },
-                65: {
-                    letter: 'a',
-                    soundId: 11
-                },
-                83: {
-                    letter: 's',
-                    soundId: 12
-                },
-                68: {
-                    letter: 'd',
-                    soundId: 13
-                },
-                70: {
-                    letter: 'f',
-                    soundId: 14
-                },
-                71: {
-                    letter: 'g',
-                    soundId: 15
-                },
-                72: {
-                    letter: 'h',
-                    soundId: 16
-                },
-            }
-            key = assoc[keyCode];
-            if (assoc[keyCode] === undefined) {
-                key = assoc[81];
-            }
-
-            return key;
-        },
-
-        playSound: function (pos) {
-            $('.mpc-sound:eq(' + pos + ')').trigger('play');
+            $(document).on('keyup', function(e) {
+                var key  = $('.mpc-keyboard-key[data-code=' + e.keyCode + ']');
+                    key.removeClass('active');
+            });
         },
 
     }
@@ -188,7 +212,6 @@ $(function () {
         },
 
         setHasCurrent: function (track) {
-            console.log(track);
             this.removeAllCurrentTracks();
             track.addClass('active');
         },
