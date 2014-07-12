@@ -7,7 +7,7 @@
 		<title>LATROYON</title>
 	</head>
     <body>
-        <header class="navbar navbar-static-top bs-docs-nav navbar-inverse">
+        <!-- <header class="navbar navbar-static-top bs-docs-nav navbar-inverse">
           <div class="container">
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -20,13 +20,13 @@
             </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Bonjour</a></li>
+                    <li><a href="#">Mpc</a></li>
                     <li class="divider"></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 </nav>
           </div>
-        </header>
+        </header> -->
         <div class="hero">
             <div class="logo"></div>
         </div>
@@ -48,10 +48,24 @@
         </div>
 
         <div class="container">
+            <div class="mpc" id="mpc">                
+                <?php for ($i=1; $i < 17; $i++): ?>
+                    <div class="mpc-touch">
+                        <audio controls class="hidden mpc-sound" id="sound-<?php echo $i; ?>">
+                        <source src="sounds/<?php echo $i; ?>.mp3" type="audio/mpeg">
+                        Your browser does not support this audio format.
+                        </audio>                    
+                    </div>
+                <?php endfor; ?>
+
+        </div>
+
+        <div class="container">
             <div class="round">
                 <input type="text" name="round" class="round" data-min="0" data-max="50" value="30" />
             </div>
         </div>
+
 
 
         <!--SCRIPT-->

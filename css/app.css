@@ -44,6 +44,28 @@
 	height: 100%;
 }
 
+/** MPC **/
+.mpc {
+	background: #000;
+	width: 650px;
+	overflow: hidden;
+	padding: 4px;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+}
+
+.mpc-touch {
+	background: #ebebeb;
+	cursor: pointer;
+	width: 150px;
+	height: 150px;
+	float: left;
+	margin: 5px;
+}
+
 /** Tracks **/
 .tracks {
 	margin-bottom: 50px;
