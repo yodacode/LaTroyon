@@ -7,38 +7,38 @@
 		<title>LATROYON</title>
 	</head>
     <body>
-        <!-- <header class="navbar navbar-static-top bs-docs-nav navbar-inverse">
-          <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="../" class="navbar-brand">LATROYON</a>
+        
+        <header class="hero">
+            <div class="navbar navbar-static-top bs-docs-nav navbar-inverse">
+              <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="../" class="navbar-brand">LATROYON</a>
+                </div>
+                    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="mpc-btn">Mpc</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    </nav>
+              </div>
             </div>
-                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Mpc</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                </nav>
-          </div>
-        </header> -->
-        <div class="hero">
             <div class="logo"></div>
-        </div>
+        </header>
 
-        <audio id="player" controls class="hidden">
-            <source id="source" src="http://htstream4.net/f8d45af14216f424a37f457b28203337.mp3" type="audio/mpeg">
-            Your browser does not support this audio format.
-        </audio>
 
         <div class="container tracks">
-            <div class="page-header text-center">
-                <h1>Va y kiff ma gueule</h1>
+            <div class="page-header">                
+                <audio id="player" controls style="width:100%">
+                    <source id="source" src="http://htstream4.net/f8d45af14216f424a37f457b28203337.mp3" type="audio/mpeg">
+                    Your browser does not support this audio format.
+                </audio>
             </div>
             <div id="tpl-track" class="hidden">
                 <div class="col-md-2 tracks-item" data-id="{{id}}" data-stream="{{stream}}">
