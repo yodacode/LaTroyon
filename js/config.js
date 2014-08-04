@@ -2,17 +2,22 @@ require.config({
     baseUrl: 'js',
     paths: {
         jQuery: 'libs/jquery/dist/jquery',
-        mustache: 'libs/mustache/mustache'
-
+        mustache: 'libs/mustache/mustache',
+        bootstrap: 'libs/bootstrap/dist/js/bootstrap.min'
     },
     shim: {
         jQuery: {
             exports: '$'
         },
-        mustache: 'Mustache'
+        mustache: {
+            exports: 'Mustache'
+        },
+        bootstrap: {
+          deps: ["jQuery"]
+        }
     }
 });
 
 
 // Load the main app module to start the app
-requirejs(["app/app"]);
+require(["app/app"]);

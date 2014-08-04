@@ -1,8 +1,8 @@
-require(['jQuery', 'mustache'], function ($, Mustache) {
- 
+require(['jQuery', 'mustache', 'bootstrap'], function ($, Mustache) {
+
     console.log('jQuery version:', $.fn.jquery);
     console.log('Mustache', Mustache);
-    
+
 
 	var App = {};
 
@@ -140,14 +140,14 @@ require(['jQuery', 'mustache'], function ($, Mustache) {
                 }, 500, function () {
                     that.bindKeyboard(isDisplay);
                     that.status.isDisplay = isDisplay;
-                    
-                    if (isDisplay) {                    
+
+                    if (isDisplay) {
                         that.UI.mask.fadeIn();
                     } else {
                         that.UI.mask.fadeOut();
                     }
                 });
-            
+
         },
 
         bindKeyboard: function (isBind) {
