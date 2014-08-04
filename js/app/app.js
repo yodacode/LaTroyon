@@ -1,4 +1,8 @@
-$(function () {
+require(['jQuery', 'mustache'], function ($, Mustache) {
+ 
+    console.log('jQuery version:', $.fn.jquery);
+    console.log('Mustache', Mustache);
+    
 
 	var App = {};
 
@@ -279,6 +283,7 @@ $(function () {
 	}
 
     App.Sound.init();
+
 
 
 });

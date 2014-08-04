@@ -15,7 +15,8 @@
   ],
   "dependencies": {
     "bootswatch": "~3.2.0",
-    "mustache": "~0.8.2"
+    "mustache": "~0.8.2",
+    "requirejs": "~2.1.14"
   },
   "private": true
 }
