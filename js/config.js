@@ -3,7 +3,9 @@ require.config({
     paths: {
         jQuery: 'libs/jquery/dist/jquery',
         mustache: 'libs/mustache/mustache',
-        bootstrap: 'libs/bootstrap/dist/js/bootstrap.min'
+        bootstrap: 'libs/bootstrap/dist/js/bootstrap.min',
+
+        mpc: 'mpc'
     },
     shim: {
         jQuery: {
@@ -14,7 +16,7 @@ require.config({
         },
         bootstrap: {
           deps: ["jQuery"]
-        }
+        },
     }
 });
 
