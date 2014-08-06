@@ -15,11 +15,12 @@ require.config({
             exports: 'Mustache'
         },
         bootstrap: {
-          deps: ["jQuery"]
+            deps: ["jQuery"]
         },
     }
 });
 
 
 // Load the main app module to start the app
-require(["app/app"]);
+require(["app/App"]);
+

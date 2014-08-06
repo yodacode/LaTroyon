@@ -1,8 +1,9 @@
 define(
     [
-        'jQuery', 
-        'app/mpc/src/keyboard-en', 
+        'jQuery',
+        'app/mpc/src/keyboard-en',
         'app/mpc/src/keyboard-fr'
+
     ], function ($, keyboardEN, keyboardFR) {
 
     Mpc = {
@@ -43,7 +44,6 @@ define(
                     that.display(false);
                 });
 
-
         },
 
         bind: function () {
@@ -67,19 +67,18 @@ define(
         display: function (isDisplay) {
             var that = this;
 
-                this.UI.mpc.stop().animate({
-                    top: isDisplay ? '80px' : '-800px'
-                }, 500, function () {
-                    that.bindKeyboard(isDisplay);
-                    that.status.isDisplay = isDisplay;
+            this.UI.mpc.stop().animate({
+                top: isDisplay ? '80px' : '-800px'
+            }, 500, function () {
+                that.bindKeyboard(isDisplay);
+                that.status.isDisplay = isDisplay;
 
-                    if (isDisplay) {
-                        that.UI.mask.fadeIn();
-                    } else {
-                        that.UI.mask.fadeOut();
-                    }
-                });
-
+                if (isDisplay) {
+                    that.UI.mask.fadeIn();
+                } else {
+                    that.UI.mask.fadeOut();
+                }
+            });
         },
 
         bindKeyboard: function (isBind) {
