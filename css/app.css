@@ -11,7 +11,7 @@
 }
 
 
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form { 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
 	border-color: #FFF;
 }
 
@@ -178,4 +178,35 @@ div.round canvas {
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
+}
+
+/** social-network **/
+.social-network {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.social-network li {
+	list-style: none;
+	display: inline-block;
+	margin: 0px 10px 0px 10px;
+}
+
+.social-network a{
+	display: block;
+	width: 50px;
+	height: 50px;
+	background: #F00;
+}
+
+.social-network .icon-mixcloud {
+	background: url('../img/icon-mixcloud.png');
+}
+
+.social-network .icon-soundcoud {
+	background: url('../img/icon-soundcloud.png');
+}
+
+.social-network .icon-facebook {
+	background: url('../img/icon-facebook.png');
 }

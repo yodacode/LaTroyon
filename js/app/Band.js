@@ -12,8 +12,7 @@ define(['jQuery'], function ($) {
 
 		},
 
-		isNight: function () {
-			
+		isNight: function () {			
 			return (new Date()).getHours() > 20 && (new Date()).getHours() > 8;
 		}
 	}
