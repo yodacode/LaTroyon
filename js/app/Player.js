@@ -3,32 +3,30 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
     var Player = {
     	init: function () {                
 
-            this.range = $('[data-rangeslider]');
+            this.song = null;
+
             this.UI = {
+                timeline: $('[data-rangeslider]'),
                 currentTime: $('.player-currenttime'),
                 totalTime: $('.player-totaltime')
             };
 
-            this.song = new Audio('js/app/test.mp3');
             
-            this.bind();                
+            this.build();                
+            // this.bind();
 
             Song.init();
 
+            return this;
+
         },
 
-        create: function (song) {
+        build: function () {
 
             var that = this;
 
-            //init size range (song duration)
-            this.range.attr('max', Math.floor(song.duration));
-
-            that.setDuration(song.duration);
-            that.setCurrentTime(0);
-
             // Basic rangeslider initialization
-            this.range.rangeslider({
+            this.UI.timeline.rangeslider({
 
                 // Deactivate the feature detection
                 polyfill: false,
@@ -46,7 +44,7 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
 
                 // Callback function
                 onSlideEnd: function(position, value) {
-                    console.log('onSlideEnd');
+                    console.log('onSlideEnd');                    
                     console.log('position: ' + position, 'value: ' + value);
                 }
             });
@@ -54,22 +52,44 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
 
         },
 
+
         bind: function () {
             var that = this;
 
-            this.song.addEventListener('loadedmetadata', function() {
-                console.log();
-                Player.create({
-                    duration: that.song.duration
-                });
-                
+            
+        },
+
+        playSong: function (song) {
+            var that = this;
+            this.loadSong(song, function () {
                 that.song.play();
             });
 
-            this.song.addEventListener('timeupdate',function (){
-                curtime = parseInt(that.song.currentTime, 10);
-                that.setCurrentTime(that.song.currentTime);                    
+             this.song.addEventListener('timeupdate',function (){                
+                that.setCurrentTime(that.song.currentTime);
+                that.updateTimeLine(that.song.currentTime);
             });
+            
+        },
+
+        loadSong: function (song, callback) {
+            var that = this;
+
+            this.song = new Audio(song);
+            this.song.addEventListener('loadedmetadata', function() {
+                // update player with good properties     
+                console.log(that.song.duration, 343424);           
+                that.UI.timeline.attr('max', that.song.duration);
+                that.UI.timeline.rangeslider('update');
+                that.setCurrentTime(0);
+                that.setDuration(that.song.duration)
+                callback();
+            });
+
+        },
+
+        updateTimeLine: function (value) {                    
+            this.UI.timeline.val(value).change();
         },
 
         setCurrentTime: function (value) {

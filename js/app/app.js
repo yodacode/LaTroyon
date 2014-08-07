@@ -6,6 +6,6 @@ define(['bootstrap', 'app/Sound', 'app/Band', 'app/Player'], function (bootstrap
     
     Band.init($('.hero'));
 
-    Player.init();
+    Player.init().playSong('js/app/test.mp3');
 
 });
