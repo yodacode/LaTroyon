@@ -6,14 +6,11 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
             this.song = null;
 
             this.UI = {
+                player: $('#player'),
                 timeline: $('[data-rangeslider]'),
                 currentTime: $('.player-currenttime'),
                 totalTime: $('.player-totaltime')
-            };
-
-            
-            this.build();                
-            // this.bind();
+            }
 
             Song.init();
 
@@ -21,11 +18,13 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
 
         },
 
-        build: function () {
+        createTimeline: function (songDuration) {
 
             var that = this;
 
-            // Basic rangeslider initialization
+            this.UI.timeline.rangeslider('destroy');
+            this.UI.timeline.attr('max', songDuration);
+
             this.UI.timeline.rangeslider({
 
                 // Deactivate the feature detection
@@ -33,23 +32,23 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
 
                 // Callback function
                 onInit: function() {
-                    that.setCurrentTime();                        
+                    that.setCurrentTime(0);
+                    that.setDuration(that.song.duration)
                 },
 
                 // Callback function
-                onSlide: function(position, value) {
+                onSlide: function(position, value) {                    
                     console.log('onSlide');
-                    console.log('position: ' + position, 'value: ' + value);
+                    console.log('position: ' + position, 'value: ' + value);                    
                 },
 
                 // Callback function
                 onSlideEnd: function(position, value) {
                     console.log('onSlideEnd');                    
-                    console.log('position: ' + position, 'value: ' + value);
+                    console.log('position: ' + position, 'value: ' + value);                
+                    that.jumpToTime(value);
                 }
             });
-
-
         },
 
 
@@ -77,15 +76,17 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
 
             this.song = new Audio(song);
             this.song.addEventListener('loadedmetadata', function() {
-                // update player with good properties     
-                console.log(that.song.duration, 343424);           
-                that.UI.timeline.attr('max', that.song.duration);
-                that.UI.timeline.rangeslider('update');
-                that.setCurrentTime(0);
-                that.setDuration(that.song.duration)
+                // update player with good properties                             
+                that.createTimeline(that.song.duration);                
                 callback();
             });
 
+        },
+
+        jumpToTime: function (time) {
+            this.song.pause();
+            this.song.currentTime = time;            
+            this.song.play();
         },
 
         updateTimeLine: function (value) {                    

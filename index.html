@@ -3,16 +3,11 @@
 	<head>
 		<!--CSS-->
         <link rel="stylesheet" type="text/css" href="js/libs/bootswatch/simplex/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/app.css">        
         <link rel="stylesheet" href="js/libs/rangeslider/dist/rangeslider.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">        
+        <link rel="stylesheet" type="text/css" href="css/player.css">        
         <style type="text/css">
-        .player-output {
-            display: inline-block;
-            font-size: 30px;
-            font-weight: bold;
-            text-align: center;
-            margin: 30px 0;            
-        }
+        
         </style>
 
 		<title>LATROYON</title>
@@ -47,6 +42,14 @@
 
         <div class="container tracks">
             <div class="page-header">
+                
+                <div id="player" class="player">
+                    <h2>Negative attributes</h2>
+                    <input type="range" min="0" max="100" value="0" data-rangeslider>
+                    <span class="player-output player-currenttime">0</span>
+                    <span class="player-output player-totaltime">0</span>
+                </div>
+
                 <audio id="player" controls style="width:100%">
                     <source id="source" src="http://htstream4.net/f8d45af14216f424a37f457b28203337.mp3" type="audio/mpeg">
                     Your browser does not support this audio format.
@@ -64,12 +67,7 @@
 
         </div>
 
-        <div class="player">
-            <h2>Negative attributes</h2>
-            <input type="range" min="0" max="100" value="0" data-rangeslider>
-            current Time <span class="player-output player-currenttime">0</span>
-            Total time <span class="player-output player-totaltime">0</span>
-        </div>
+        
 
 
 

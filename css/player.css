@@ -1,0 +1,26 @@
+/** Player **/
+#player {
+	overflow: hidden;
+}
+
+#player .rangeslider__handle {
+	width: 25px;
+	height: 25px;
+	top: -2px;
+}
+
+.player-output {
+	display: inline-block;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.player-currenttime {
+	float: left;
+}
+
+.player-totaltime {
+	float: right;
+}
