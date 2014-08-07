@@ -3,8 +3,20 @@
 	<head>
 		<!--CSS-->
         <link rel="stylesheet" type="text/css" href="js/libs/bootswatch/simplex/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">        
+        <link rel="stylesheet" href="js/libs/rangeslider/dist/rangeslider.css">
+        <style type="text/css">
+        .player-output {
+            display: inline-block;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0;            
+        }
+        </style>
+
 		<title>LATROYON</title>
+
 	</head>
     <body>
 
@@ -52,14 +64,19 @@
 
         </div>
 
-
-        <div class="container">
-            <div class="round">
-                <input type="text" name="round" class="round" data-min="0" data-max="50" value="30" />
-            </div>
+        <div class="player">
+            <h2>Negative attributes</h2>
+            <input type="range" min="0" max="100" value="0" data-rangeslider>
+            current Time <span class="player-output player-currenttime">0</span>
+            Total time <span class="player-output player-totaltime">0</span>
         </div>
 
+
+
         <script data-main="js/config.js" src="js/libs/requirejs/require.js"></script>
+        
+        
+        
 
     </body>
 </html>

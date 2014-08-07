@@ -4,6 +4,7 @@ require.config({
         jQuery: 'libs/jquery/dist/jquery',
         mustache: 'libs/mustache/mustache',
         bootstrap: 'libs/bootstrap/dist/js/bootstrap.min',
+        rangeslider: 'libs/rangeslider/dist/rangeslider.min',
 
         mpc: 'mpc'
     },
@@ -17,6 +18,9 @@ require.config({
         bootstrap: {
             deps: ["jQuery"]
         },
+        rangeslider: {
+            deps: ["jQuery"]
+        }        
     }
 });
 
