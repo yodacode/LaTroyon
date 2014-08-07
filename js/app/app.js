@@ -1,11 +1,9 @@
-define(['bootstrap', 'app/Sound', 'app/Band', 'app/Player'], function (bootstrap, Sound, Band, Player) {
+define(['bootstrap', 'app/Song', 'app/Band', 'app/Player'], function (bootstrap, Song, Band, Player) {
 
 	var App = {};
 
-    Sound.init();
+    Song.init();
     
     Band.init($('.hero'));
-
-    Player.init().playSong('js/app/test.mp3');
 
 });

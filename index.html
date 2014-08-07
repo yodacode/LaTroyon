@@ -39,24 +39,20 @@
             <div class="logo"></div>
         </header>
 
-
+        <div id="player" class="player">
+            <input type="range" min="0" max="100" value="0" data-rangeslider>
+            <span class="player-output player-currenttime">0</span>
+            <span class="player-output player-totaltime">0</span>
+            <h2 class="player-title">Negative attributes</h2>
+        </div>
+        
         <div class="container tracks">
             <div class="page-header">
                 
-                <div id="player" class="player">
-                    <h2>Negative attributes</h2>
-                    <input type="range" min="0" max="100" value="0" data-rangeslider>
-                    <span class="player-output player-currenttime">0</span>
-                    <span class="player-output player-totaltime">0</span>
-                </div>
-
-                <audio id="player" controls style="width:100%">
-                    <source id="source" src="http://htstream4.net/f8d45af14216f424a37f457b28203337.mp3" type="audio/mpeg">
-                    Your browser does not support this audio format.
-                </audio>
+                
             </div>
             <div id="tpl-track" class="hidden">
-                <div class="col-md-2 tracks-item" data-id="{{id}}" data-stream="{{stream}}">
+                <div class="col-md-2 tracks-item" data-id="{{id}}" data-stream="{{stream}}" data-name="{{name}}" data-img="{{img}}">
                     <img src="{{img}}" class="img-circle"/>
                 </div>
             </div>

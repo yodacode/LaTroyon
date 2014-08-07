@@ -1,18 +1,18 @@
-define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
+define(['jQuery', 'rangeslider'], function ($) {
 
     var Player = {
-    	init: function () {                
+    	init: function (songParams) {                
 
             this.song = null;
+            this.songParams = songParams;
 
             this.UI = {
                 player: $('#player'),
                 timeline: $('[data-rangeslider]'),
                 currentTime: $('.player-currenttime'),
-                totalTime: $('.player-totaltime')
+                totalTime: $('.player-totaltime'),
+                title: $('.player-title')
             }
-
-            Song.init();
 
             return this;
 
@@ -34,6 +34,7 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
                 onInit: function() {
                     that.setCurrentTime(0);
                     that.setDuration(that.song.duration)
+                    that.setTitle(that.songParams.title)
                 },
 
                 // Callback function
@@ -101,6 +102,10 @@ define(['jQuery', 'app/Song', 'rangeslider'], function ($, Song) {
 
         setDuration: function (value) {
             this.UI.totalTime.text(this.readableDuration(value));
+        },
+
+        setTitle: function (title) {
+            this.UI.title.text(title);
         },
 
         readableDuration: function (seconds) {
