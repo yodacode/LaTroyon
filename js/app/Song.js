@@ -17,6 +17,10 @@ define(
                 this.UI.tplTrack = $('#tpl-track');
                 this.UI.tracks = $('.tracks');
 
+                this.Player = Player.init({
+                    title: name
+                });
+
         		this.getSounds(function (sounds) {
         			that.build(sounds);
                     Mpc.init();
@@ -38,11 +42,8 @@ define(
                     var stream = $(this).attr('data-stream'),
                         name = $(this).attr('data-name');
 
-                    that.setHasCurrent($(this));
-
-                    Player.init({
-                        title: name,                        
-                    }).playSong(stream);
+                    that.setHasCurrent($(this));                    
+                    that.Player.playSong(stream, {title: name});
                 });
 
         	},

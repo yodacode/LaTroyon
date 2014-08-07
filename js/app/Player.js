@@ -1,13 +1,13 @@
 define(['jQuery', 'rangeslider'], function ($) {
 
     var Player = {
-    	init: function (songParams) {                
+    	init: function () {                
 
-            this.song = null;
-            this.songParams = songParams;
+            this.song = null;            
 
             this.UI = {
                 player: $('#player'),
+                playerInfo: $('.player-info'),
                 timeline: $('[data-rangeslider]'),
                 currentTime: $('.player-currenttime'),
                 totalTime: $('.player-totaltime'),
@@ -33,20 +33,19 @@ define(['jQuery', 'rangeslider'], function ($) {
                 // Callback function
                 onInit: function() {
                     that.setCurrentTime(0);
-                    that.setDuration(that.song.duration)
-                    that.setTitle(that.songParams.title)
+                    that.setDuration(that.song.duration);                    
                 },
 
                 // Callback function
                 onSlide: function(position, value) {                    
-                    console.log('onSlide');
-                    console.log('position: ' + position, 'value: ' + value);                    
+                    // console.log('onSlide');
+                    // console.log('position: ' + position, 'value: ' + value);                    
                 },
 
                 // Callback function
                 onSlideEnd: function(position, value) {
-                    console.log('onSlideEnd');                    
-                    console.log('position: ' + position, 'value: ' + value);                
+                    // console.log('onSlideEnd');                    
+                    // console.log('position: ' + position, 'value: ' + value);                
                     that.jumpToTime(value);
                 }
             });
@@ -55,13 +54,13 @@ define(['jQuery', 'rangeslider'], function ($) {
 
         bind: function () {
             var that = this;
-
-            
         },
 
-        playSong: function (song) {
+        playSong: function (song, params) {
             var that = this;
+
             this.loadSong(song, function () {
+                that.setTitle(params.title);
                 that.song.play();
             });
 
@@ -78,7 +77,8 @@ define(['jQuery', 'rangeslider'], function ($) {
             this.song = new Audio(song);
             this.song.addEventListener('loadedmetadata', function() {
                 // update player with good properties                             
-                that.createTimeline(that.song.duration);                
+                that.createTimeline(that.song.duration);
+                that.UI.playerInfo.slideDown();
                 callback();
             });
 
