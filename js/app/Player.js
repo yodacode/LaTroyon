@@ -8,7 +8,7 @@ define(['jQuery', 'rangeslider'], function ($) {
             this.UI = {
                 player: $('#player'),
                 playerInfo: $('.player-info'),
-                timeline: $('[data-rangeslider]'),
+                slider: $('[data-rangeslider]'),
                 currentTime: $('.player-currenttime'),
                 totalTime: $('.player-totaltime'),
                 title: $('.player-title')
@@ -22,10 +22,10 @@ define(['jQuery', 'rangeslider'], function ($) {
 
             var that = this;
 
-            this.UI.timeline.rangeslider('destroy');
-            this.UI.timeline.attr('max', songDuration);
+            this.UI.slider.rangeslider('destroy');
+            this.UI.slider.attr('max', songDuration);
 
-            this.UI.timeline.rangeslider({
+            var to = this.UI.slider.rangeslider({
 
                 // Deactivate the feature detection
                 polyfill: false,
@@ -38,22 +38,33 @@ define(['jQuery', 'rangeslider'], function ($) {
 
                 // Callback function
                 onSlide: function(position, value) {                    
-                    // console.log('onSlide');
+                    console.log('onSlide');
                     // console.log('position: ' + position, 'value: ' + value);                    
                 },
 
                 // Callback function
                 onSlideEnd: function(position, value) {
                     // console.log('onSlideEnd');                    
-                    // console.log('position: ' + position, 'value: ' + value);                
+                    // console.log('position: ' + position, 'value: ' + value); 
                     that.jumpToTime(value);
                 }
             });
+
+            this.UI.rangeslider = $('.rangeslider');           
+
+            this.UI.rangeslider.on('mousedown', function () {                
+                that.pauseSong();
+                             
+            });
+            
+
+            this.bind();
         },
 
 
         bind: function () {
             var that = this;
+            
         },
 
         playSong: function (song, params) {
@@ -84,6 +95,14 @@ define(['jQuery', 'rangeslider'], function ($) {
 
         },
 
+        pauseSong: function () {
+            this.song.pause();
+        },
+
+        resumeSong: function () {
+            this.song.play();
+        },
+
         jumpToTime: function (time) {
             this.song.pause();
             this.song.currentTime = time;            
@@ -91,7 +110,7 @@ define(['jQuery', 'rangeslider'], function ($) {
         },
 
         updateTimeLine: function (value) {                    
-            this.UI.timeline.val(value).change();
+            this.UI.slider.val(value).change();
         },
 
         setCurrentTime: function (value) {
