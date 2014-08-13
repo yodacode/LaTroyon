@@ -55,7 +55,7 @@ define(['jQuery', 'rangeslider'], function ($) {
 
 
             this.UI.rangeslider.on('mousedown', function () {
-
+                that.timelineStop();
             }).on('mouseup', function () {
                 that.timelineMove();
             });
@@ -92,7 +92,7 @@ define(['jQuery', 'rangeslider'], function ($) {
         },
 
         timelineStop: function () {
-            clearInterval(that.intervalTimeline);
+            clearInterval(this.intervalTimeline);
         },
 
         loadSong: function (song, callback) {
