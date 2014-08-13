@@ -42,7 +42,8 @@ define(
                     var stream = $(this).attr('data-stream'),
                         name = $(this).attr('data-name');
 
-                    that.setHasCurrent($(this));                    
+                    that.setHasCurrent($(this));
+                    that.Player.pauseSong();
                     that.Player.playSong(stream, {title: name});
                 });
 

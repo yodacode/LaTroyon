@@ -53,20 +53,18 @@ define(['jQuery', 'rangeslider'], function ($) {
             });
 
 
-
-            this.UI.rangeslider.on('mousedown', function () {
-                that.timelineStop();
-            }).on('mouseup', function () {
-                that.timelineMove();
-            });
-
-
             this.bind();
         },
 
 
         bind: function () {
             var that = this;
+
+            this.UI.rangeslider.on('mousedown', function () {
+                that.timelineStop();
+            }).on('mouseup', function () {
+                that.timelineMove();
+            });
 
         },
 
@@ -81,6 +79,45 @@ define(['jQuery', 'rangeslider'], function ($) {
 
         },
 
+
+        loadSong: function (song, callback) {
+            var that = this;
+
+            this.song = new Audio(song);
+
+            this.song.addEventListener('loadedmetadata', function() {
+                // update player with good properties
+                that.createTimeline(that.song.duration);
+                that.displayLoader(true);
+                that.UI.playerInfo.slideDown();
+                callback();
+            });
+
+
+
+            this.song.addEventListener('canplaythrough', function() {
+                that.displayLoader(false);
+            });
+
+        },
+
+        pauseSong: function () {
+            if (this.song) {
+                this.song.pause();
+            }
+        },
+
+        resumeSong: function () {
+            this.song.play();
+        },
+
+        jumpToTime: function (time) {
+            this.song.pause();
+            this.song.currentTime = time;
+            this.song.play();
+            this.displayLoader(true);
+        },
+
         timelineMove: function () {
             var that = this;
 
@@ -93,33 +130,6 @@ define(['jQuery', 'rangeslider'], function ($) {
 
         timelineStop: function () {
             clearInterval(this.intervalTimeline);
-        },
-
-        loadSong: function (song, callback) {
-            var that = this;
-
-            this.song = new Audio(song);
-            this.song.addEventListener('loadedmetadata', function() {
-                // update player with good properties
-                that.createTimeline(that.song.duration);
-                that.UI.playerInfo.slideDown();
-                callback();
-            });
-
-        },
-
-        pauseSong: function () {
-            this.song.pause();
-        },
-
-        resumeSong: function () {
-            this.song.play();
-        },
-
-        jumpToTime: function (time) {
-            this.song.pause();
-            this.song.currentTime = time;
-            this.song.play();
         },
 
         updateTimeLine: function (value) {
@@ -149,6 +159,24 @@ define(['jQuery', 'rangeslider'], function ($) {
                 sec = sec >= 10 ? sec : '0' + sec;
 
             return min + ':' + sec;
+        },
+
+        displayLoader: function (isLoading) {
+            var that = this,
+                loaderInteval,
+                rangeslider = this.UI.rangeslider
+                pos = 1;
+
+            if (isLoading) {
+                rangeslider.addClass('loading');
+                loaderInteval = setInterval(function() {
+                    that.UI.rangeslider.css({'background-position': pos += 1});
+                }, 100);
+            } else {
+                rangeslider.removeClass('loading');
+                pos = 1;
+            }
+
         }
 
     }

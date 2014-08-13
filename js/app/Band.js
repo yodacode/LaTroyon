@@ -4,15 +4,17 @@ define(['jQuery'], function ($) {
 		init: function (container) {
 			this.container = container;
 			this.build();
-			console.log(this.isNight());
 		},
 
 		build: function () {
-			var img = this.isNight() ? this.container.addClass('night') : this.container.removeClass('night')
-
+			if (this.isNight()) {
+				this.container.addClass('night');
+			} else {
+				this.container.addClass('day');
+			}
 		},
 
-		isNight: function () {			
+		isNight: function () {
 			return (new Date()).getHours() > 20 && (new Date()).getHours() > 8;
 		}
 	}

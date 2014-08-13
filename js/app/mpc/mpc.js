@@ -50,7 +50,7 @@ define(
 
             var that = this;
 
-            this.UI.mpc.on('click', '.mpc-keyboard-key', function () {
+            this.UI.mpc.on('touchstart', '.mpc-keyboard-key', function () {
                 var playerAudio  = $(this).find('audio')[0];
                 that.play(playerAudio);
             });

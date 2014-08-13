@@ -25,7 +25,6 @@
 
 /** Band **/
 .hero {
-	background-image: url('../img/bg-latroyon-hd.jpg');
 	background-repeat: no-repeat;
 	background-position: 0px -200px;
 	background-size: cover;
@@ -37,6 +36,10 @@
 
 .hero.night {
 	background-image: url('../img/bg-latroyon-hd2.jpg');
+}
+
+.hero.day {
+	background-image: url('../img/bg-latroyon-hd.jpg');
 }
 
 .logo {
