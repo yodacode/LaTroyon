@@ -38,14 +38,14 @@
 
 .player-output {
 	display: inline-block;
-	font-size: 20px;
+	font-size: 18px;
 	text-align: center;
 	margin: 10px 0;
 }
 
 .player-title {
-	font-size: 25px;
-	margin-top: 8px;
+	font-size: 20px;
+	margin-top: 12px;
 	margin-left: 30px;
 	text-align: center;
 	color: #808080;

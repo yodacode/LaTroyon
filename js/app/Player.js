@@ -93,8 +93,6 @@ define(['jQuery', 'rangeslider'], function ($) {
                 callback();
             });
 
-
-
             this.song.addEventListener('canplaythrough', function() {
                 that.displayLoader(false);
             });
