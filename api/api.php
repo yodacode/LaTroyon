@@ -30,5 +30,25 @@
 
 		}
 
+		public function getDescription($artist) {
+
+			// Set some options - we are passing in a useragent too here
+			curl_setopt_array($this->_curl, array(
+			    CURLOPT_RETURNTRANSFER => 1,
+			    CURLOPT_URL => self::URL_GET_SOUND . '/' . $artist,
+			));
+
+			// Send the request & save response to $resp
+			$json = curl_exec($this->_curl);
+			$data = json_decode($json, true);
+			$description = $data['data']['description'];
+
+			// Close request to clear up some resources
+			curl_close($this->_curl);
+
+			return $description;
+
+		}
+
 	}
  ?>

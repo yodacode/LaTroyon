@@ -25,6 +25,3 @@ require.config({
 });
 
 
-// Load the main app module to start the app
-require(["app/App"]);
-

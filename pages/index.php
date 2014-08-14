@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden-xs"><a href="#" class="mpc-btn">Mpc</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </nav>
       </div>
@@ -33,8 +33,6 @@
 
 <div class="container tracks">
     <div class="page-header">
-
-
     </div>
     <div id="tpl-track" class="hidden">
         <div class="col-md-2 tracks-item" data-id="{{id}}" data-stream="{{stream}}" data-name="{{name}}" data-img="{{img}}">
@@ -47,10 +45,8 @@
 <div class="mpc" id="mpc">
 </div>
 
-<div class="container">
-    <ul class="social-network">
-        <li><a href="http://www.mixcloud.com/latroyonsquare/" class="icon-mixcloud" target="blank"></a></li>
-        <li><a href="https://soundcloud.com/latroyon" class="icon-soundcoud" target="blank"></a></li>
-        <li><a href="https://www.facebook.com/LaTroyon?fref=ts" class="icon-facebook" target="blank"></a></li>
-    </ul>
-</div>
+
+<script type="text/javascript">
+	// Load the main app module to start the app
+	require(["app/App"]);
+</script>
