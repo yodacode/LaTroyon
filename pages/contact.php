@@ -18,6 +18,7 @@
         </nav>
       </div>
     </div>
+        <div class="logo"></div>
 </header>
 <div class="container">
     <div class="page-header">
@@ -30,8 +31,5 @@
      ?>
     <div class="col-md-6">
         <p><?php echo $descr; ?></p>
-    </div>
-    <div class="col-md-6 text-center">
-        <img src="../img/logo-latroyon.png">
     </div>
 </div>
