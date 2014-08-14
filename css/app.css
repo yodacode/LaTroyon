@@ -6,13 +6,18 @@
 	border: none !important;
 }
 
-.navbar .navbar-nav>li>a:hover {
+.navbar .navbar-nav>li>a {
 	color: #ffffff;
+	font-size: 16px;
 }
 
+.navbar-inverse .navbar-brand {
+	color: #FFF;
+}
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
 	border-color: #FFF;
+	color: #FFF;
 }
 
 .navbar-inverse .navbar-toggle {

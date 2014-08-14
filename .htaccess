@@ -1,0 +1,5 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule	^(([a-z]*))?$	index.php?page=$1	[L]
+
+ErrorDocument 404 /404.php
